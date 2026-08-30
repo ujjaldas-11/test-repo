@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 
 int max(int a, int b) {
   if (a > b)
@@ -18,14 +19,20 @@ int knapsack(int W, int wi[], int pi[], int i, int n) {
 }
 
 int main() {
+  clock_t start = clock();
+
   int W = 100;
   int wi[] = {10, 20, 30, 14, 55};
   int pi[] = {10, 20, 30, 40, 50};
   int i;
   int n = sizeof(wi) / sizeof(wi[0]);
 
+  clock_t end = clock();
+  double elapsed_sec = (double)(end - start) / CLOCKS_PER_SEC;
+
   int result = knapsack(W, wi, pi, i, n);
   printf("The value of profit is %d\n", result);
+  printf("Time: %f seconds\n", elapsed_sec);
 
   return 0;
 }
